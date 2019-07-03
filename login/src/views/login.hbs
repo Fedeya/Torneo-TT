@@ -1,0 +1,46 @@
+{{> header}}
+
+<script src="connect-fb.js"></script>
+
+
+<div class="card mx-auto mt-2 text-center w-75">
+    <div class="card-header">
+        <h3 class="card-title">Iniciar Sesion</h3>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            <div class="form-group">
+                <input type="text" name="email" class="form-control" placeholder="Correo">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Contraseña">
+            </div>
+
+            <button class="btn btn-success btn-block">Iniciar</button>
+
+        </form>
+
+    </div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script>
+    
+    if({{error}} !== 0){
+
+        if({{error}} === 1){
+            swal({
+                icon: "error",
+                title: "Error",
+                text: "Cuenta Inexistente"
+            });
+        }
+
+    }
+
+
+</script>
+
+{{> footer}}

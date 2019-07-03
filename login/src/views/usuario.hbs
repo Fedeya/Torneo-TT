@@ -1,0 +1,19 @@
+{{> header}}
+
+<div class="jumbotron text-center">
+    <h1 class="display-4">{{name}} {{lastname}}</h1>
+    <p class="lead">{{email}}</p>
+</div>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    swal({
+        icon: "success",
+        title: "Exito",
+        text: "Datos Ingresados Correctamente"
+    })
+</script>
+
+{{> footer}}

@@ -1,0 +1,20 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index -e js,hbs,css",
+    "start": "node src/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.0.4",
+    "mongoose": "^5.6.2",
+    "mongoose-unique-validator": "^2.0.3"
+  }
+}
