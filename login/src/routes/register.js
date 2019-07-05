@@ -23,27 +23,27 @@ router.post("/register", (req, res) => {
     año = new Date().getFullYear();
 
     edad = año - edad.split("-")[0];
-    
-    if(edad < 18 && password.length < 6){
-        res.render(path.join(__dirname, "../views/register"), {
-            register: "active",
-            error: 3,
-            success: false
-        });
-    }
-    else if(edad < 18){
+
+    if(edad < 18 || password.length < 6){
+
+        let error;
+
+        if(edad < 18 && password.length < 6){
+            error = 3;
+        }
+        else if(edad < 18){
+            error = 1;
+        }
+        else if(password.length < 6){
+            error = 2;
+        }
+
         return res.render(path.join(__dirname, "../views/register"), {
             register: "active",
-            error: 1,
+            error,
             success: false
         });
-    }
-    else if(password.length < 6){
-        return res.render(path.join(__dirname, "../views/register"), {
-            register: "active",
-            error: 2,
-            success: false
-        });
+
     }
 
     let usuario = new Usuario({
