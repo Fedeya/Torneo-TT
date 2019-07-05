@@ -24,9 +24,16 @@ router.post("/login", (req, res) => {
         password: data.password
     }, (err, usuario) => {
         if (usuario.length === 1){
-            res.redirect("/usuario/" + usuario[0]._id);
+            res.render(path.join(__dirname , "../views/usuario"),{
+                name: usuario[0].name,
+                lastname: usuario[0].lastname,
+                email: usuario[0].email
+            });
         }else{
-            res.redirect("/login?error=1");
+            res.render(path.join(__dirname, "../views/login"),{
+                login: "active",
+                error: 1
+            });
         }
     });
 

@@ -6,13 +6,10 @@ const router = Router();
 
 router.get("/register", (req, res) => {
 
-    error = req.query.error || 0;
-    success = req.query.success || false;
-
     res.render(path.join(__dirname, "../views/register"), {
         register: "active",
-        error,
-        success
+        error: 0,
+        success: false
     });
 
 })
@@ -28,13 +25,25 @@ router.post("/register", (req, res) => {
     edad = año - edad.split("-")[0];
     
     if(edad < 18 && password.length < 6){
-        return res.redirect("/register?error=3")
+        res.render(path.join(__dirname, "../views/register"), {
+            register: "active",
+            error: 3,
+            success: false
+        });
     }
     else if(edad < 18){
-        return res.redirect("/register?error=1")
+        return res.render(path.join(__dirname, "../views/register"), {
+            register: "active",
+            error: 1,
+            success: false
+        });
     }
     else if(password.length < 6){
-        return res.redirect("/register?error=2")
+        return res.render(path.join(__dirname, "../views/register"), {
+            register: "active",
+            error: 2,
+            success: false
+        });
     }
 
     let usuario = new Usuario({
@@ -50,14 +59,21 @@ router.post("/register", (req, res) => {
         try {
             if(err.errors.email.message == "email debe de ser unico"){
             
-            res.redirect("/register?error=4");
+                res.render(path.join(__dirname, "../views/register"), {
+                    register: "active",
+                    error: 4,
+                    success: false
+                });
 
             }else if(err) throw err;
         }
         catch{
 
-            res.redirect("/register?success=true")
-
+            res.render(path.join(__dirname, "../views/register"), {
+                register: "active",
+                error: 0,
+                success: true
+            });
         }
 
 
