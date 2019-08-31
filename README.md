@@ -4,3 +4,4 @@
 
 * [Inscripcion](inscripcion/)
 * [Login](login/)
+* [Reconocimiento de Voz](voz/)
